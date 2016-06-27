@@ -1,0 +1,56 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Add New Micro Service</title>
+	
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
+	<script src="../static/app/controllers/DeploymentCenterController.js" th:src="@{app/controllers/DeploymentCenterController.js}"></script>
+	<script src="../static/app/services/DeploymentCenterService.js" th:src="@{app/services/DeploymentCenterService.js}"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css" th:src="@{css/styles.css}"></link>
+
+</head>
+	<body>
+		<div class="container">
+
+			<form method="POST" enctype="multipart/form-data" name = "uploadForm" action = "deploy">
+				<div>
+					<h2>KN Deployment Center</h2>
+					<h2 >Micro Service Info</h2>
+					<lable >MS Name:  </lable>
+					<input class = "form-control" type="text" name="msName" />
+					
+					<h2 >Server Info</h2>
+					
+					<lable >Server Name: </lable>
+					<select name="serverName" class="form-control" >				
+					     <option th:each="server : ${allServers}"  th:text = "${server.serverName}"></option>
+					</select>
+					
+					<lable >Host Name:  </lable>
+					<select name="hostName" class="form-control" >
+						<option th:each="server : ${allServers}" th:text = "${server.hostName}"></option>
+					</select>
+					
+					<lable >Server Port: </lable><input class = "form-control" type="text" name="port"/>
+					<lable >Server User Name:  </lable><input class = "form-control" type="text" name="username"/>
+					<lable >Server Password:  </lable><input class = "form-control" type="text" name="password"/>
+					
+					<lable >Select MS:  </lable><input class = "form-control" type="file" name="file" value = "Browse" multiple = "true"/>
+					
+					
+					<button class="form-control" type="submit" value = "deploy" name = "deployAction">Deploy</button>
+					<!-- <button type="submit" value = "upload" name = "uplaodAction">Upload</button> -->
+					<!-- <button type="submit" value = "undeploy">Undeploy</button>
+					<button type="submit" value = "move">Move</button> -->
+				</div>
+			</form>
+		</div>
+
+	</body>
+</html>

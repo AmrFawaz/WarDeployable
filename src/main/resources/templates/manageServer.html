@@ -1,0 +1,60 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Add New Server</title>
+	
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
+	<script src="../static/app/controllers/DeploymentCenterController.js" th:src="@{app/controllers/DeploymentCenterController.js}"></script>
+	<script src="../static/app/services/DeploymentCenterService.js" th:src="@{app/services/DeploymentCenterService.js}"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css" th:src="@{css/styles.css}"></link>
+
+</head>
+	<body>
+		<div class="container">
+
+			<form method="POST" enctype="multipart/form-data" name = "editServer" action = "editServer">
+				<div>
+					<h2>KN Deployment Center</h2>
+					
+					
+					<lable >Server Name:  </lable>
+					<input class = "form-control" type="text" name="id" th:value="${server.id}"/>
+					
+					<lable >Server Name:  </lable>
+					<input class = "form-control" type="text" name="serverName" th:value="${server.serverName}"/>
+					
+					<lable >Host: </lable>
+					<input class = "form-control" type="text" name="hostName" th:value="${server.hostName}"/>
+					
+					<lable >Port: </lable>
+					<input class = "form-control" type="text" name="port" th:value="${server.port}"/>
+					
+					<lable >Server User Name: </lable>
+					<input class = "form-control" type="text" name="username" th:value="${server.username}"/>
+					
+					<lable >Server Password: </lable>
+					<input class = "form-control" type="text" name="password" th:value="${server.password}"/>
+					
+					<lable >Server Type:  </lable>
+					<select name="serverType" class="form-control" >
+						<option th:each="serverType : ${serverTypes}" th:text = "${serverType.name}" th:selected = "(${serverType.name} == ${server.type})" name = "type"></option>
+					</select>
+					
+					
+					
+					
+					<button class="form-control" type="submit" value = "editServer" name = "editServerAction">Deploy</button>
+					
+
+				</div>
+			</form>
+		</div>
+
+	</body>
+</html>

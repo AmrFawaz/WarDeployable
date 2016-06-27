@@ -1,0 +1,46 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Add New Micro Service</title>
+	
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
+	<script src="../static/app/controllers/DeploymentCenterController.js" th:src="@{app/controllers/DeploymentCenterController.js}"></script>
+	<script src="../static/app/services/DeploymentCenterService.js" th:src="@{app/services/DeploymentCenterService.js}"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css" th:src="@{css/styles.css}"></link>
+
+</head>
+	<body>
+		<div class="container">
+
+			<form method="POST" enctype="multipart/form-data" name = "uploadForm" action = "duplicateMS">
+				<div>
+				
+					<h2>Duplicate</h2>
+					<h3>MicroService</h3>
+					<input th:value = "${microService.id}" name = "msId"/>
+					<input th:value = "${microService.msName}" name = "msName"/>
+					<h2>Servers</h2>
+					<input th:value = "${currentServer}" name = "currentServerId"/>
+					<li th:each="server : ${allServers}">
+						<label th:text="${server.id}"></label>
+						<input type="checkbox" name="servers" th:value="${server.id}"/>
+            			<label th:text="${server.serverName}"></label>
+					</li>
+					
+					<input type="checkbox" name="removeSource"/>
+            		<label >Remove Form Source</label>
+					
+				</div>
+				
+				<button type = "submit">Duplicate</button>
+			</form>
+		</div>
+
+	</body>
+</html>

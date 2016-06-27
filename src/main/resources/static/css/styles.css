@@ -1,0 +1,8 @@
+body {padding:20px}
+.proxied-field-wrap {
+    display:block;
+    position:absolute;
+    height:0;
+    width:0;
+    overflow:hidden;
+}
